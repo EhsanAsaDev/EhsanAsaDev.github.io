@@ -1,16 +1,19 @@
 # Site
-name: "Memoirs"
-title: "Memoirs"
-description: "I will take you on the fabulous world of exploration. Travel, culture, lifestyle. Eat, Pray, Love!"
+name: "EhsanAsaDev"
+title: "Ehsan As a Developer"
+description: "I will write you on the meaningful way about my Life as a Developer!"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl:
 google_analytics: 'UA-xxxxxxxx-1'
 disqus: 'demowebsite'
-mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+mailchimp-list: 'https://github.us7.list-manage.com/subscribe/post?u=9665988ed051821977b3dfab8&amp;id=42a9de3ff8'
 include: ["_pages"]
 permalink: /:title/
-email: wowthemesnet@gmail.com
+email: eshakeri@gmail.com
+
+
+
 
 # Authors
 authors:
