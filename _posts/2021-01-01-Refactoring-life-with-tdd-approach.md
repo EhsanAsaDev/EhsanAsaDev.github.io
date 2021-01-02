@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Refactoring life with tdd approach
+comments: false
 categories: [ lifestyle ]
 tags: [About, Developer, TDD]
 image: https://hpf-happify-marty-prod-user-uploads.happify.com/cms_uploads/en_US/img/happifiers/one-thing-you-may-not-know-about-change-1_5434036.jpg
