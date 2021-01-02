@@ -44,10 +44,10 @@ private void testRefactoringMyself_SuccessD() throws Exception {
 		//assertTrue(plan.isAchieved());
 
         //The Best Way to Start a New Habit
-        assertTrue(habit.haveTimeAndLocationToStart);
+        assertTrue(habit.haveTimeAndLocationToStart());
 		
        //Walk Slowly But Never Backward
-		assertTrue(progressService.beBetterABitFromLastDay(habit,today));
+		assertTrue(progressService.beBetterABitFromYesterday(habit,today));
 		
 	}
 }
