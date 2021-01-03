@@ -2,8 +2,8 @@
 name: "EhsanAsaDev"
 title: "Ehsan As a Developer"
 description: "I will write you on the meaningful way about my Life as a Developer!"
-logo: 'assets/images/logo.png'
-favicon: 'assets/images/logo.png'
+logo: 'assets/images/logo.svg'
+favicon: 'assets/images/logo.ico'
 baseurl:
 google_analytics: 'UA-xxxxxxxx-1'
 disqus: 'demowebsite'

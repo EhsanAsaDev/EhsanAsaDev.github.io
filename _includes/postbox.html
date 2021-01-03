@@ -1,5 +1,6 @@
 <!-- begin post -->
 {% assign author = site.authors[post.author] %}
+{% assign sortedCategories = post.categories | sort %}
 
 <div class="blog-grid-item">
     <div class="card h-100">
@@ -25,10 +26,17 @@
                 </div>
                 {% endif %}
             </h2>
-            <h4 class="card-text">{{ post.excerpt | strip_html | truncatewords:30 }}</h4>
+            <h4 class="card-text">{{ post.excerpt | strip_html | truncatewords:100 }}</h4>
         </div>
         <div class="card-footer bg-white">
             <div class="wrapfooter">
+                {% if post.categories %}
+                    {% for category in sortedCategories %}
+                    <a class="smoothscroll badge badge-primary text-capitalize postBoxCategory"
+                       href="{{site.baseurl}}/categories#{{ category | replace: " ","-" }}">{{ category }}</a>
+                    {% endfor %}
+                {% endif %}
+
                 {% if post.author %}
                 <span class="meta-footer-thumb">
                 {% if author.avatar %}

@@ -286,7 +286,6 @@ img, img:hover {
     }
     .post-date {
         float:right;
-        margin-top: 10px;
     }
     .img-thumb {
         object-fit:cover;
@@ -519,6 +518,10 @@ img, img:hover {
         display:inline-block;
         margin: 0 3px;
     }
+}
+
+.postBoxCategory {
+    font-size: 15px;
 }
 
 //share
