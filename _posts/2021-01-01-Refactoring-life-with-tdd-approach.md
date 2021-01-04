@@ -7,12 +7,7 @@ tags: [About, Developer, TDD]
 image: https://enable.com/images/blog/155-a.png
 excerpt: These days I'm refactoring myself, and I hope writing here be a part of these refactoring.
          As a developer we should like refactoring. The main goals of refactoring are make our code more efficient, 
-         more readable, and more elegant, so we should think about that every time we can, 
-         when we're actively coding, when we're in launching time 
-         even though when we want to sleep (I think this type is the most interested one) 
-         also we should do it when we have a bug, when we want to implement a new feature, 
-         when we don't have anything to do and finally when we are in the day before release 
-         ( again I think this type is the most excited one). How about requirements or maybe better called pre-requirements?
+         more readable, and more elegant, so we should think ...
 ---
 
 These days I'm refactoring myself, and I hope writing here be a part of these refactoring.
