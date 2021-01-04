@@ -19,19 +19,21 @@ also we should do it when we have a bug, when we want to implement a new feature
 when we don't have anything to do and finally when we are in the day before release 
 ( again I think this type is the most excited one). How about requirements or maybe better called pre-requirements? 
 we need reliable test scenarios. With these scenarios developers can be confident and motivated about refactoring. 
-The process is obvious we change something, run test, fixed problem and again change something ...
+The process is obvious we write/run the test, make it something, try to make it better and again write/run the test ...
  
 
-I'm excited about starting this refactor. We can talk about all of the things that are wrong with it 
+I'm excited about starting this refactor. We can talk about all the things that are wrong with it 
 and confidently say every thing that we want to do... But doing it is a whole different thing. I'm trying to refactor 
 myself in level of the system not the level of the results. I know our habits shape our the system we live with that, so 
 I should improve and change my life habits. 
-As a developer I want to have test scenarios for each refactoring so this time I want to have a test for refactoring myself.
-The idea is clear, I need something for test my refactoring progress and don't know something more clear than code. 
-The context is different, but I think at least it can be a good experience.
-so if I want writing test about it maybe It is hard. the main problem is 
+As a developer I like to have test scenarios for each refactoring so this time I want to have a test for refactoring myself.
+Think about it! with having test scenarios like developers who want to refactor their code, we can be confident enough 
+we can track ourselves easily we can have a feedback. For example for each day we try to have a plan and try to be 
+better than yesterday and at the end of th day we can validate our tries and progress. Like real world for developers when 
+their test was failed It's not sign of the end of the world we try again and again to build a better things and with 
+this method we can always stay on the path.
 
-I hope this piece of code have more meaning for you than the sentence I wrote. ;)
+It is more abstract but let's get our hands dirty with some code:
 
 ```java
 /**
@@ -44,17 +46,20 @@ private void testRefactoringMyself_SuccessD() throws Exception {
 	List<habit> habits= planService.getByName("refactoringMyself");
 	for(Habit habit : habits){
 	
-		//assertTrue(plan.isAchieved());
+        //be smart this way not work
+		//assertTrue(plan.getTrget().isAchieved());
 
         //The Best Way to Start a New Habit
         assertTrue(habit.haveTimeAndLocationToStart());
 		
-       //Walk Slowly But Never Backward
-		assertTrue(progressService.beBetterABitFromYesterday(habit,today));
-		
+        //The Best Way to Start a New Habit
+        assertTrue(habit.haveTimeAndLocationToStart());		
 	}
+    //Walk Slowly But Never Backward
+    assertTrue(progressService.beBetterABitFromYesterday(habit,today));
 }
 ```
+I hope this piece of code have more meaning for you than the sentence I wrote. ;)
 
 P.S Some ideas behind this post is get from `Atomic Habits` book.
 
