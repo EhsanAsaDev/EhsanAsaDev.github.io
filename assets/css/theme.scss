@@ -314,22 +314,6 @@ img, img:hover {
             object-position:top;
         }
     }
-
-    .blog-grid-item:nth-child(2), .blog-grid-item:nth-child(3) {
-        .card-text {
-            display:none;
-        }
-        .img-thumb {
-            object-fit:cover;
-            height:160px;
-            width:100%;
-            object-position:top;
-        }
-        .card-title {
-            font-size:18px;
-            line-height:1.5;
-        }      
-    }
 }
 
 //pagination
@@ -618,6 +602,25 @@ body.active-side {
 @media (min-width: 1440px) {
     .container, .container-sm, .container-md, .container-lg {
         max-width: 1140px;
+    }
+}
+@media (min-width: 1024px) {
+    .blog-grid-item:nth-child(2), .blog-grid-item:nth-child(3) {
+        .card-text {
+            display: none;
+        }
+    }
+    .blog-grid-item:nth-child(2), .blog-grid-item:nth-child(3) {
+        .img-thumb {
+            object-fit:cover;
+            height:160px;
+            width:100%;
+            object-position:top;
+        }
+        .card-title {
+            font-size:18px;
+            line-height:1.5;
+        }
     }
 }
 @media (max-width: 1024px) {
