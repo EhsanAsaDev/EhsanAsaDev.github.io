@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Refactoring Life with TDD Approach
+title: Continuous Life Refactoring with TDD Approach
 comments: false
 categories: [ lifestyle ]
 tags: [About, Developer, TDD]
-image: https://enable.com/images/blog/155-a.png
+image: https://enable.com/images/blog/new_way.png
 excerpt: These days I'm refactoring myself, and I hope writing here be a part of these refactoring.
          As a developer we should like refactoring. The main goals of refactoring are make our code more efficient, 
          more readable, and more elegant, so we should think ...
@@ -20,6 +20,8 @@ when we don't have anything to do and finally when we are in the day before rele
 ( again I think this type is the most excited one). How about requirements or maybe better called pre-requirements? 
 we need reliable test scenarios. With these scenarios developers can be confident and motivated about refactoring. 
 The process is obvious we write/run the test, make it something, try to make it better and again write/run the test ...
+
+![Don't act like Monolith](/assets/images/test_driven_development.png)
  
 
 I'm excited about starting this refactor. We can talk about all the things that are wrong with it 
