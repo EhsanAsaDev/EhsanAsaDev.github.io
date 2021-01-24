@@ -79,11 +79,11 @@ private void testRefactoringMyself_Success() throws Exception {
 
         }     
 
-        //find a partner who has the  same goal and can give you extra motivation
-        
+        //find a partner who has the same goal and can give you extra motivation
+        asserTrue(isFindSomeoneToAccompanying())
         
         //Think about who you want to be without this habit and make sure that you like that    
-        asserTrue(habit.isfutureImpactClearEnogth())
+        asserTrue(habit.isFutureImpactClearEnough())
 		
 
 	}
