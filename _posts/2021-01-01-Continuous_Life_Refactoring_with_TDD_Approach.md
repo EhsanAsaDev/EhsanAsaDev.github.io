@@ -5,9 +5,9 @@ comments: false
 categories: [ lifestyle ]
 tags: [About, Developer, TDD]
 image: assets/images/new_way.png
-excerpt: These days I'm refactoring myself, and I hope writing here be a part of these refactoring.
-         As a developer we should like refactoring. The main goals of refactoring are make our code more efficient, 
-         more readable, and more elegant, so we should think ...
+excerpt: These days I'm refactoring myself, and I hope writing here could be a part of this refactoring.
+         As a developer, we should like refactoring. The main goals of refactoring are making our code more efficient, 
+         more readable, and more elegant, so we should think about ...
 ---
 
 These days I'm refactoring myself, and I hope writing here could be a part of this refactoring.
