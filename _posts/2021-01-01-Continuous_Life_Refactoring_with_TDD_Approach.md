@@ -39,7 +39,7 @@ this method, we can always stay on the path.
 
 I know it is very abstract but let's get our hands dirty with some code:
 
-java
+```java
 /**
  * @author: EhsanAsaDev
  */
@@ -94,7 +94,7 @@ private void testRefactoringMyself_Success() throws Exception {
 
 
 }
- 
+``` 
 I hope this piece of code has more meaning for you than the sentence I wrote. ;)
 
 P.S I got some ideas of this post from `Atomic Habits` book.
