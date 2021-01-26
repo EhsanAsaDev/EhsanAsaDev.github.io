@@ -736,3 +736,104 @@ body.active-side {
         }
     }
 }
+
+/*----------------------------*\
+	About
+\*----------------------------*/
+.post-author .media .media-left {
+    padding-right: 40px;
+    vertical-align: middle;
+}
+
+.post-author .media .media-left .media-object {
+    width: 120px;
+    border-radius: 50%;
+}
+
+.post-author .author-social {
+    margin-top: 15px;
+}
+
+.post-author .author-social li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.post-author .author-social li > a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #a7b3c6;
+    color: #FFF;
+    border-radius: 2px;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+}
+
+.post-author .author-social li > a:hover, .post-author .author-social li > a:focus {
+    color: #FFF;
+    opacity: 0.9;
+}
+
+.footer-social {
+    margin-top: 20px;
+}
+
+.footer-social li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.footer-social li > a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #a7b3c6;
+    color: #FFF;
+    border-radius: 2px;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+}
+
+.footer-social a.follow-linkedin:hover {
+    background-color: #007bb5;
+}
+
+.footer-social a.follow-rss:hover {
+    background-color: #353535;
+}
+
+.footer-social a.follow-twitter:hover {
+    background-color: #55acee;
+}
+
+.footer-social a.follow-github:hover {
+    background-color: #24292e;
+}
+
+.footer-social a.follow-stackoverflow:hover {
+    background-color: #F48024;
+}
+
+.footer-social a.follow-email:hover {
+    background-color: #000000;
+}
+
+.footer-social li > a:hover, .footer-social li > a:focus {
+    color: #FFF;
+    opacity: 0.9;
+}
+
+.section-row {
+    margin-bottom: 40px;
+}
+
+img.circle {
+    border-radius: 50%;
+    padding: 5px;
+    border: 2px solid #eeeeee;
+}
