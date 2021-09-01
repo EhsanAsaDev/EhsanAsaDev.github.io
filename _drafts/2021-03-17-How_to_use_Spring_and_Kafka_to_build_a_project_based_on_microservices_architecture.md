@@ -6,8 +6,8 @@ categories: [ Spring boot ]
 tags: [Microservices, spring , Kafka]
 image: assets/images/car_position_diagram.jpg
 excerpt: This is a good example for how Spring boot works with Kafka as a message broker.
-In this project I also use MongoDB and Docker. I show you how to write test for producers and consumers
-and how use docker compose for configure Kafka in your dev environment ...
+         In this project I also use MongoDB and Docker. I show you how to write test for producers and consumers
+         and how use docker compose for configure Kafka in your dev environment ...
 
 
 ---
