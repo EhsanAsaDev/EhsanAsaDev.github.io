@@ -3,7 +3,7 @@ layout: post
 title: How to use Spring boot and Kafka to build a project based on microservices architecture
 comments: false
 categories: [ Spring boot ]
-tags: [Microservices, spring , Kafka]
+tags: [Microservices, Docker , Kafka]
 image: assets/images/spring-docker-kafka.png
 excerpt: This is a good example of how Spring boot works with Kafka as a message broker.
          In this project, I also use MongoDB and Docker. I show you how to write a test for producers and consumers
@@ -11,7 +11,7 @@ excerpt: This is a good example of how Spring boot works with Kafka as a message
 
 
 ---
-With Apache Kafka, you shouldn't worry about handling millions of messages quickly and Spring boot provide some useful library for working with Kafka and this is why this stack is very popular these days. I provided a production-ready project
+With Apache Kafka, you shouldn't worry about handling millions of messages quickly and Spring boot provides some useful library for working with Kafka and this is why this stack is very popular these days. I provided a production-ready project
 base on microservice architecture on
 [GitHub](https://github.com/EhsanAsaDev/car-Location-microservice/)
 and in this post, I want to show you how we can use some features in spring boot to using Kafka as a message broker and also
@@ -34,9 +34,9 @@ The implementation consists of Three microservices implemented in Java using Spr
 The purpose of this microservice is to fetch car locations from the third party service then produce an event for each car
 and finally, send it to Kafka.
 
-For fetching car locations use API, which is provided in the form of the public Docker image.
-you can use this image car2godeveloper/api-for-coding-challenge docker.
-when you pull and run it for example on port 3000 you can find API swagger specification is available under this URL:
+For fetching car locations through an API, which is provided in the form of the public Docker image.
+you can use this docker image: car2godeveloper/api-for-coding-challenge 
+when you pull and run it for example on port 3000 you can find API swagger specification is available through this URL:
 http://localhost:3000/documentation/
 
 For streaming, we should config a scheduler for fetching data periodically. I implement it simply in 
@@ -56,7 +56,7 @@ public Vehicle[] fetchCarData(){
 }
 ``` 
 
-After fetching data we should send it as an event to Kafka. spring-kafka has a useful and simple class for that. you just add this dependency in your pom.
+After fetching data we should send it as an event to Kafka. spring-kafka has a useful and simple class for that. you just need to add this dependency in your pom.
 
 ```xml
         <dependency>
@@ -73,7 +73,7 @@ public ListenableFuture<SendResult<String,Vehicle>> sendVehicleEvents(Vehicle ve
 
     String key = vehicle.getVin();
 
-    ProducerRecord<String,Vehicle> producerRecord = buildProducerRecord(key, vehicle, topic);
+    ProducerRecord<String,Vehicle> producerRecord = buildProducerRecord(key, vehicle, "vehicle-position-events");
 
     ListenableFuture<SendResult<String,Vehicle>> listenableFuture =  kafkaTemplate.send(producerRecord);
     listenableFuture.addCallback(new VehicleEventListenableFutureCallback(key,vehicle));
@@ -82,7 +82,7 @@ public ListenableFuture<SendResult<String,Vehicle>> sendVehicleEvents(Vehicle ve
 }
 ``` 
 
-The main point here is using Vin as the key of messages. As you know Kafka only guarantees message ordering within a partition so, in this way, we can be sure all data belong to the one car send to a specific partition.
+The main point here is using Vin as the key of messages. As you know Kafka only guarantees message ordering within a partition so, in this way, we can be sure all data belonging to a specific car will be sent to a specific partition.
 
 
 #### Car Position Consumer
@@ -129,7 +129,7 @@ public ResponseEntity<Vehicle> getVehicleByVin(@RequestParam("vin") String vin) 
 }
 ``` 
 
-finally, running the project via the home page (http://localhost:8083/) you can access with swagger to test APIs.
+finally, running the project via the home page (http://localhost:8083/) you can access it with swagger to test APIs.
 
 
 ### Testing an Apache Kafka Integration within a Spring Boot Application and JUnit 5
