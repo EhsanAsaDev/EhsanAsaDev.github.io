@@ -104,9 +104,9 @@ you should consider that finding polygon is a computational activity so if Kafka
 locations then we have trouble here in consuming. I will talk about that how we can solve this issue.
 
 #### Car Webservice
-This is the simplest one! everything is ready now we only need to expose some rest service and fetch data from 
-MongoDB for that. I implement two rest services one of them get a Vin for a car and return location info for this car. 
-the second one gets a polygon and show all car now are in that.
+This is the simplest one! everything is ready now we only need to expose some rest services and fetch data from 
+MongoDB for that. I implemented two rest services, one of them get a Vin for a car and return location info for this car. 
+The second one gets a polygon and show all car now are in that.
 
 ```java
 
@@ -128,8 +128,6 @@ public ResponseEntity<Vehicle> getVehicleByVin(@RequestParam("vin") String vin) 
     return responseEntity;
 }
 ``` 
-
-finally, running the project via the home page (http://localhost:8083/) you can access it with swagger to test APIs.
 
 
 ### Testing an Apache Kafka Integration within a Spring Boot Application and JUnit 5
