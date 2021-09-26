@@ -6,7 +6,8 @@ categories: [ Spring boot ]
 tags: [WebSocket, game , interactive]
 image: assets/images/spring-websocket.png
 excerpt: In this post, I'm going to show you how to create a 
-         WebSocket server in Java using Spring Boot, and the Java API for WebSockets...
+         WebSocket server in Java using Spring Boot, we will learn these together while 
+         developing the two-player Mancala game ...
 
 
 ---
