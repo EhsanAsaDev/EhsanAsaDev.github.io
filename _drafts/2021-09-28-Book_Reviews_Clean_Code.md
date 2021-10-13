@@ -1,0 +1,244 @@
+---
+layout: post
+title: Create interactive game with Spring Boot and WebSocket
+comments: false
+categories: [ Spring boot ]
+tags: [WebSocket, game , interactive]
+image: assets/images/spring-websocket.png
+excerpt: In this post, I'm going to show you how to create a 
+         WebSocket server in Java using Spring Boot, we will learn these together while 
+         developing the two-player Mancala game ...
+
+
+---
+
+#Chapter 2 Meaningful names
+don't remember: You should name a variable using the same care with which you name a first-born child. :)
+As a Programmer, you are not only responsible for satisfying a compiler or interpreter but also you're responsible for someone who wants reading and understanding your code.
+so try to use some names that reveal your intention to reader, when choose a name think about is it helpful and meaningful for readers or is it contain some disinformation and misled readers? 
+
+“Well, over here on the bee cee arr three cee enn tee we have a pee ess zee kyew int, see?”  :) This matters because programming is a social activity so use pronounceable names.
+
+All of us these days use powerful IDEs for programing. so use searchable names and don’t Add Gratuitous Context to all classnames! Why make it hard for the IDE to help you?
+
+Classes and objects should have noun or noun phrase names like Customer, WikiPage, Account, and AddressParser. Avoid words like Manager, Processor, Data, or Info in the name of a class. A class name should not be a verb.
+
+Methods should have verb or verb phrase names like postPayment, deletePage, or save. Accessors, mutators, and predicates should be named for their value and prefixed with get, set, and is according to the javabean standard
+When constructors are overloaded, use static factory methods with names that describe the arguments.
+
+Avoid using the same word for two purposes. Using the same term for two different ideas is essentially a pun.
+
+first try to use Solution Domain Names then try to use Problem Domain Names
+Separating solution and problem domain concepts is part of the job of a good programmer and designer. The code that has more to do with problem domain concepts should have names drawn from the problem domain
+
+The hardest thing about choosing good names is that it requires good descriptive skills and a shared cultural background.
+
+#3- Functions
+Functions are the first line of organization in any program.
+The first rule of functions is that they should be small. The second rule of functions is that they should be smaller than that.
+
+This implies that the blocks within if statements, else statements, while statements, and so on should be one line long. Probably that line should be a function call. Not only does this keep the enclosing function small, but it also adds documentary value because the function called within the block can have a nicely descriptive name.
+This also implies that functions should not be large enough to hold nested structures. Therefore, the indent level of a function should not be greater than one or two. This, of course, makes the functions easier to read and understand.
+
+FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.
+
+So, another way to know that a function is doing more than “one thing” is if you can extract another function from it with a name that is not merely a restatement of its implementation
+
+
+Sections within Functions
+Look at Listing 4-7 on page 71. Notice that the generatePrimes function is divided into sections such as declarations, initializations, and sieve. This is an obvious symptom of doing more than one thing. Functions that do one thing cannot be reasonably divided into sections.
+
+In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction.
+
+Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, like broken windows, once details are mixed with essential concepts, more and more details tend to accrete within the function.
+
+We want the code to read like a top-down narrative.5 We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Step-down Rule.
+
+Switch
+My general rule for switch statements is that they can be tolerated if they appear only once, are used to create polymorphic objects, and are hidden behind an inheritance relationship so that the rest of the system can’t see them [G23]. Of course every circumstance is unique, and there are times when I violate one or more parts of that rule.
+
+Use Descriptive Names
+Remember Ward’s principle: “You know you are working on clean code when each routine turns out to be pretty much what you expected.”
+Half the battle to achieving that principle is choosing good names for small functions that do one thing.
+Don’t be afraid to make a name long. A long descriptive name is better than a short enigmatic name.
+A long descriptive name is better than a long descriptive comment.
+
+####Function Arguments
+The ideal number of arguments for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification—and then shouldn’t be used anyway.
+
+The argument is at a different level of abstraction than the function name and forces you to know a detail.
+Arguments are even harder from a testing point of view. Imagine the difficulty of writing all the test cases to ensure that all the various combinations of arguments work properly. If there are no arguments, this is trivial. If there’s one argument, it’s not too hard. With two arguments the problem gets a bit more challenging. With more than two arguments, testing every combination of appropriate values can be daunting.
+
+Common Monadic Forms
+
+There are two very common reasons to pass a single argument into a function. You may be asking a question about that argument, as in boolean fileExists(“MyFile”). Or you may be operating on that argument, transforming it into something else and returning it. For example, InputStream fileOpen(“MyFile”) transforms a file name String into an InputStream return value. These two uses are what readers expect when they see a function. You should choose names that make the distinction clear, and always use the two forms in a consistent context.
+A somewhat less common, but still very useful form for a single argument function, is an event. In this form there is an input argument but no output argument. The overall program is meant to interpret the function call as an event and use the argument to alter the state of the system, for example, void passwordAttemptFailedNtimes(int attempts). Use this form with care. It should be very clear to the reader that this is an event. Choose names and contexts carefully.
+Try to avoid any monadic functions that don’t follow these forms
+
+Flag Arguments
+
+Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It immediately complicates the signature of the method, loudly proclaiming that this function does more than one thing. It does one thing if the flag is true and another if the flag is false!
+
+Dyadic Functions
+A function with two arguments is harder to understand than a monadic function
+Even obvious dyadic functions like assertEquals(expected, actual) are problematic. How many times have you put the actual where the expected should be? The two arguments have no natural ordering. The expected, actual ordering is a convention that requires practice to learn.
+
+
+Triads
+
+Functions that take three arguments are significantly harder to understand than dyads. The issues of ordering, pausing, and ignoring are more than doubled. I suggest you think very carefully before creating a triad.
+this is a good example to change a triads to dyads:
+Circle makeCircle(double x, double y, double radius);
+Circle makeCircle(Point center, double radius);
+
+
+Verbs and Keywords
+
+Choosing good names for a function can go a long way toward explaining the intent of the function and the order and intent of the arguments.
+
+
+Have No Side Effects
+
+Output Arguments
+
+In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object
+
+Command Query Separation
+
+Functions should either do something or answer something, but not both. Either your function should change the state of an object, or it should return some information about that object. Doing both often leads to confusion.
+
+Prefer Exceptions to Returning Error Codes
+
+When you return an error code, you create the problem that the caller must deal with the error immediately.
+On the other hand, if you use exceptions instead of returned error codes, then the error processing code can be separated from the happy path code and can be simplified.
+
+Extract Try/Catch Blocks
+
+Try/catch blocks are ugly in their own right. They confuse the structure of the code and mix error processing with normal processing. So it is better to extract the bodies of the try and catch blocks out into functions of their own.
+
+Error Handling Is One Thing
+
+When you use exceptions rather than error codes, then new exceptions are derivatives of the exception class. They can be added without forcing any recompilation or redeployment.
+
+Don’t Repeat Yourself
+Duplication may be the root of all evil in software. Many principles and practices have been created for the purpose of controlling or eliminating it. Consider, for example, that all of Codd’s database normal forms serve to eliminate duplication in data. Consider also how object-oriented programming serves to concentrate code into base classes that would otherwise be redundant. Structured programming, Aspect Oriented Programming, Component Oriented Programming, are all, in part, strategies for eliminating duplication. It would appear that since the invention of the subroutine, innovations in software development have been an ongoing attempt to eliminate duplication from our source code.
+
+Structured Programming
+if you keep your functions small, then the occasional multiple return, break, or continue statement does no harm and can sometimes even be more expressive than the single-entry, single-exit rule. On the other hand, goto only makes sense in large functions, so it should be avoided.
+
+
+How Do You Write Functions Like This?
+Writing software is like any other kind of writing. When you write a paper or an article, you get your thoughts down first, then you massage it until it reads well. The first draft might be clumsy and disorganized, so you wordsmith it and restructure it and refine it until it reads the way you want it to read.
+When I write functions, they come out long and complicated. They have lots of indenting and nested loops. They have long argument lists. The names are arbitrary, and there is duplicated code. But I also have a suite of unit tests that cover every one of those clumsy lines of code.
+So then I massage and refine that code, splitting out functions, changing names, eliminating duplication. I shrink the methods and reorder them. Sometimes I break out whole classes, all the while keeping the tests passing.
+In the end, I wind up with functions that follow the rules I’ve laid down in this chapter. I don’t write them that way to start. I don’t think anyone could.
+
+Conclusion
+Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of their chosen programming language to construct a much richer and more expressive language that can be used to tell that story. Part of that domain-specific language is the hierarchy of functions that describe all the actions that take place within that system. In an artful act of recursion those actions are written to use the very domain-specific language they define to tell their own small part of the story.
+
+####Comment
+Don’t comment bad code—rewrite it.”
+—Brian W. Kernighan and P. J. Plaugher
+One of the more common motivations for writing comments is bad code. We write a module, and we know it is confusing and
+disorganized. We know it’s a mess. So we say to ourselves, “Ooh, I’d better comment that!” No! You’d better clean it!
+Rather than spend your time writing the comments that explain the mess you’ve made, spend it cleaning that mess.
+
+comments are, at best, a necessary evil. If our programming languages were expressive enough, or if we had the talent to
+subtly wield those languages to express our intent, we would not need comments very much—perhaps not at all.
+Programmers can’t realistically maintain comments.
+
+Truth can only be found in one place: the code. Only the code can truly tell you what it does. It is the only source of 
+truly accurate information. Therefore, though comments are sometimes necessary, we will expend significant energy to minimize them.
+
+#####Good Comments
+
+that the only truly good comment is the comment you found a way not to write.
+Sometimes it is just helpful to translate the meaning of some obscure argument or return value into something that’s readable.
+In general, it is better to find a way to make that argument or return value clear in its own right; but when its part 
+of the standard library, or in code that you cannot alter, then a helpful clarifying comment can be useful.
+
+TODO Comments
+Whatever else a TODO might be, it is not an excuse to leave bad code in the system.
+
+
+#####Bad Comments
+Most comments fall into this category. Usually they are crutches or excuses for poor code or justifications for 
+insufficient decisions, amounting to little more than the programmer talking to himself
+
+Mumbling
+
+Any comment that forces you to look in another module for the meaning of that comment has failed to communicate to you 
+and is not worth the bits it consumes.
+
+Redundant Comments
+
+It's about comments probably take longer to read than the code itself. It’s certainly not more informative than the code.
+
+Misleading Comments
+
+Sometimes, with all the best intentions, a programmer makes a statement in his comments that isn’t precise enough to be
+accurate. The result is comment that is harder to read than the body of the code.
+
+Mandated Comments
+
+It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a 
+comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization.
+
+Journal Comments
+
+Remember and repeat version control do it better
+
+Noise Comments
+
+say obvious thing : //default constractor really? :)
+Replace the temptation to create noise with the determination to clean your code. You’ll find it makes you a better 
+and happier programmer.
+
+Scary Noise
+
+Javadocs can also be noisy. What purpose do the following Javadocs (from a well-known open-source library) serve? 
+Answer: nothing. They are just redundant noisy comments written out of some misplaced desire to provide documentation.
+
+Position Markers
+Think of it this way. A banner is startling and obvious if you don’t see banners very often. So use them very sparingly,
+and only when the benefit is significant. If you overuse banners, they’ll fall into the background noise and be ignored.
+
+Closing Brace Comments
+if you find yourself wanting to mark your closing braces, try to shorten your functions instead.
+
+Attributions and Bylines
+There is no exception, The source code control system is a better place for this kind of information.
+
+Commented-Out Code
+Few practices are as odious as commenting-out code. Don’t do this!
+Others who see that commented-out code won’t have the courage to delete it. They’ll think it is there for a reason 
+and is too important to delete. So commented-out code gathers like dregs at the bottom of a bad bottle of wine.
+
+
+Inobvious Connection
+The connection between a comment and the code it describes should be obvious. If you are going to the trouble to write
+a comment, then at least you’d like the reader to be able to look at the comment and the code and understand what the 
+comment is talking about.
+It is a pity when a comment needs its own explanation
+
+Function Headers
+Short functions don’t need much description. A well-chosen name for a small function that does one thing is usually better than a comment header.
+
+golden rule: Don’t Use a Comment When You Can Use a Function or a Variable.Believe Most of the time it's worked fine.
+
+
+###Formatting
+
+
+
+
+
+
+
+
+
+
+
+
+
+
