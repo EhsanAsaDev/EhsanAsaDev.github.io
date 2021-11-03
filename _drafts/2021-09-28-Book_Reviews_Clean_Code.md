@@ -237,32 +237,236 @@ So what are the formatting issues that help us to communicate best?
 ####Vertical Formatting
 What does that mean to us? It appears to be possible to build significant systems (FitNesse is close to 50,000 lines) out of files that are typically 200 lines long, with an upper limit of 500. Although this should not be a hard and fast rule, it should be considered very desirable. Small files are usually easier to understand than large files are.
 
-####The Newspaper Metaphor
-We would like a source file to be like a newspaper article. The name should be simple but explanatory. The name, by itself, should be sufficient to tell us whether we are in the right module or not. The topmost parts of the source file should provide the high-level concepts and algorithms. Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.
+#####The Newspaper Metaphor
+We would like a source file to be like a newspaper article. The name should be simple but explanatory.
+The name, by itself, should be sufficient to tell us whether we are in the right module or not.
+The topmost parts of the source file should provide the high-level concepts and algorithms.
+Detail should increase as we move downward, until at the end we find the lowest level functions and 
+details in the source file.
 
-####Vertical Openness Between Concepts
-Nearly all code is read left to right and top to bottom. Each line represents an expression or a clause, and each group of lines represents a complete thought. Those thoughts should be separated from each other with blank lines.
+#####Vertical Openness Between Concepts
+Nearly all code is read left to right and top to bottom. Each line represents an expression or a clause,
+and each group of lines represents a complete thought. Those thoughts should be separated from each other
+with blank lines.
 
-####Vertical Distance
-Concepts that are closely related should be kept vertically close to each other [G10]. Clearly this rule doesn’t work for concepts that belong in separate files. But then closely related concepts should not be separated into different files unless you have a very good reason.
+#####Vertical Distance
+Concepts that are closely related should be kept vertically close to each other. Clearly this rule doesn’t
+work for concepts that belong in separate files. But then closely related concepts should not be separated 
+into different files unless you have a very good reason.
 
-####Variable Declarations. 
-Variables should be declared as close to their usage as possible. Because our functions are very short, local variables should appear at the top of each function
-Control variables for loops should usually be declared within the loop statement, as in this cute little function from the same source.
+#####Variable Declarations. 
+Variables should be declared as close to their usage as possible. Because our functions are very short, 
+local variables should appear at the top of each function.
+Control variables for loops should usually be declared within the loop statement, as in this cute little 
+function from the same source.
 
-Instance variables, on the other hand, should be declared at the top of the class. This should not increase the vertical distance of these variables, because in a well-designed class, they are used by many, if not all, of the methods of the class.
-The important thing is for the instance variables to be declared in one well-known place. Everybody should know where to go to see the declarations.
+Instance variables, on the other hand, should be declared at the top of the class. This should not increase
+the vertical distance of these variables, because in a well-designed class, they are used by many, 
+if not all, of the methods of the class.
+The important thing is for the instance variables to be declared in one well-known place. 
+Everybody should know where to go to see the declarations.
 
-Dependent Functions. If one function calls another, they should be vertically close, and the caller should be above the callee, if at all possible. This gives the program a natural flow. If the convention is followed reliably, readers will be able to trust that function definitions will follow shortly after their use. 
+Dependent Functions. If one function calls another, they should be vertically close, 
+and the caller should be above the callee, if at all possible. This gives the program a natural flow. 
+If the convention is followed reliably, readers will be able to trust that function definitions will follow 
+shortly after their use. 
 
-Conceptual Affinity. Certain bits of code want to be near other bits. They have a certain conceptual affinity. The stronger that affinity, the less vertical distance there should be between them.
-this affinity might be based on a direct dependence, such as one function calling another, or a function using a variable. But there are other possible causes of affinity. Affinity might be caused because a group of functions perform a similar operation.
+Conceptual Affinity. Certain bits of code want to be near other bits. They have a certain conceptual affinity.
+The stronger that affinity, the less vertical distance there should be between them.
+this affinity might be based on a direct dependence, such as one function calling another, 
+or a function using a variable. But there are other possible causes of affinity. 
+Affinity might be caused because a group of functions performs a similar operation.
 
-Vertical Ordering
+#####Vertical Ordering
 
-In general we want function call dependencies to point in the downward direction. That is, a function that is called should be below a function that does the calling.2 This creates a nice flow down the source code module from high level to low level.
+In general, we want function call dependencies to point in the downward direction. 
+That is, a function that is called should be below a function that does the calling.
+This creates a nice flow down the source code module from high level to low level.
 
-As in newspaper articles, we expect the most important concepts to come first, and we expect them to be expressed with the least amount of polluting detail. We expect the low-level details to come last. This allows us to skim source files, getting the gist from the first few functions, without having to immerse ourselves in the details.
+As in newspaper articles, we expect the most important concepts to come first, 
+and we expect them to be expressed with the least amount of polluting detail. 
+We expect the low-level details to come last. This allows us to skim source files, 
+getting the gist from the first few functions, without having to immerse ourselves in the details.
+
+
+#### Horizontal Formatting
+Programmers clearly prefer short lines. we should strive to keep our lines short.
+I used to follow the rule that you should never have to scroll to the right. But monitors are too wide 
+for that nowadays, and younger programmers can shrink the font so small that they can get 200 characters 
+across the screen. Don’t do that. I personally set my limit at 120.
+
+##### Horizontal Openness and Density
+We use horizontal white space to associate things that are strongly related and disassociate things that are more weakly related.
+Unfortunately, most tools for reformatting code are blind to the precedence of operators and impose the same spacing 
+throughout. So subtle spacings like those shown above tend to get lost after you reformat the code.
+
+(-b - Math.sqrt(determinant)) / (2*a); 
+
+##### Horizontal Alignment
+that this kind of alignment is not useful. The alignment seems to emphasize the wrong things and leads my eye away 
+from the true intent.
+
+##### Indentation
+To make this hierarchy of scopes visible, we indent the lines of source code in proportion to their position in the hiearchy. Statements at the level of the file, such as most class declarations, are not indented at all. Methods within a class are indented one level to the right of the class. Implementations of those methods are implemented one level to the right of the method declaration. Block implementations are implemented one level to the right of their containing block, and so on.
+
+Breaking Indentation. It is sometimes tempting to break the indentation rule for short if statements, 
+short while loops, or short functions. Whenever I have succumbed to this temptation, I have almost always gone back and
+put the indentation back in.
+
+#### Team Rules
+The title of this section is a play on words. Every programmer has his own favorite formatting rules, but if he works in a team, then the team rules.
+
+A team of developers should agree upon a single formatting style, and then every member of that team should use that style. We want the software to have a consistent style. We don’t want it to appear to have been written by a bunch of disagreeing individuals.
+
+Remember, a good software system is composed of a set of documents that read nicely. They need to have a consistent and smooth style. The reader needs to be able to trust that the formatting gestures he or she has seen in one source file will mean the same thing in others. The last thing we want to do is add more complexity to the source code by writing it in a jumble of different individual styles.
+
+
+## Objects and Data Structures
+
+#### Data Abstraction
+Hiding implementation is not just a matter of putting a layer of functions between the variables.
+Hiding implementation is about abstractions! A class does not simply push its variables out through
+getters and setters. Rather it exposes abstract interfaces that allow its users to manipulate the 
+essence of the data, without having to know its implementation.
+
+We do not want to expose the details of our data. Rather we want to express our data in abstract terms. This is not merely accomplished by using interfaces and/or getters and setters. Serious thought needs to be put into the best way to represent the data that an object contains. 
+The worst option is to blithely add getters and setters.
+
+#### Data/Object Anti-Symmetry
+Objects hide their data behind abstractions and expose functions that operate on that data. 
+Data structure expose their data and have no meaningful functions. Go back and read that again. 
+Notice the complimentary nature of the two definitions. They are virtual opposites. 
+This difference may seem trivial, but it has far-reaching implications.
+
+Procedural code (code using data structures) makes it easy to add new functions without changing 
+the existing data structures. OO code, 
+on the other hand, makes it easy to add new classes without changing existing functions.
+
+Procedural code makes it hard to add new data structures because all the functions must change. 
+OO code makes it hard to add new functions because all the classes must change.
+
+So, the things that are hard for OO are easy for procedures, 
+and the things that are hard for procedures are easy for OO!
+
+In any complex system there are going to be times when we want to add new data types rather 
+than new functions. For these cases objects and OO are most appropriate. On the other hand, 
+there will also be times when we’ll want to add new functions as opposed to data types.
+In that case procedural code and data structures will be more appropriate.
+
+Mature programmers know that the idea that everything is an object is a myth. 
+Sometimes you really do want simple data structures with procedures operating on them.
+
+#### The Law of Demeter
+There is a well-known heuristic called the Law of Demeter2 that says a module should 
+not know about the innards of the objects it manipulates. As we
+saw in the last section, objects hide their data and expose operations. 
+This means that an object should not expose its internal structure through 
+accessors because to do so is to expose, rather than to hide, its internal structure.
+
+More precisely, the Law of Demeter says that a method f of a class C should only call the methods of these:
+
+• C
+
+• An object created by f
+
+• An object passed as an argument to f
+
+• An object held in an instance variable of C
+
+#### Train Wrecks
+final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();
+Whether this is a violation of Demeter depends on whether or not ctxt, Options, 
+and ScratchDir are objects or data structures. If they are objects, then their internal 
+structure should be hidden rather than exposed, and so knowledge of their innards is a clear 
+violation of the Law of Demeter. On the other hand, if ctxt, Options, and ScratchDir are 
+just data structures with no behavior, 
+then they naturally expose their internal structure, and so Demeter does not apply.
+
+Options opts = ctxt.getOptions();
+File scratchDir = opts.getScratchDir();
+final String outputDir = scratchDir.getAbsolutePath();
+
+##### Hybrids
+This confusion sometimes leads to unfortunate hybrid structures that are half object and 
+half data structure.
+Such hybrids make it hard to add new functions but also make it hard to add new data structures.
+They are the worst of both worlds. Avoid creating them. They are indicative of a muddled design 
+whose authors are unsure of—or worse, 
+ignorant of—whether they need protection from functions or types.
+
+##### Hiding Structure
+What if ctxt, options, and scratchDir are objects with real behavior?
+ctxt.getAbsolutePathOfScratchDirectoryOption();
+or
+ctx.getScratchDirectoryOption().getAbsolutePath()
+
+The first option could lead to an explosion of methods in the ctxt object. 
+The second presumes that getScratchDirectoryOption() returns a data structure, 
+not an object. Neither option feels good.
+
+If ctxt is an object, we should be telling it to do something; we should not be asking it 
+about its internals. So why did we want the absolute path of the scratch directory? 
+What were we going to do with it? Consider this code from 
+(many lines farther down in) the same module:
+
+String outFile = outputDir + “/” + className.replace('.', '/') + “.class”;
+FileOutputStream fout = new FileOutputStream(outFile);
+BufferedOutputStream bos = new BufferedOutputStream(fout);
+->
+BufferedOutputStream bos = ctxt.createScratchFileStream(classFileName);
+
+That seems like a reasonable thing for an object to do! This allows ctxt to hide its internals 
+and prevents the current function from having to violate the Law of Demeter by navigating through 
+objects it shouldn’t know about.
+
+
+#### Data Transfer Objects
+The quintessential form of a data structure is a class with public variables and no functions. This is sometimes called 
+a data transfer object, or DTO. 
+
+#### Active Record
+Active Records are special forms of DTOs. They are data structures with public 
+(or bean-accessed) variables; but they typically have navigational methods like save and find. 
+Typically these Active Records are direct translations 
+from database tables, or other data sources.
+
+Unfortunately we often find that developers try to treat these data structures as 
+though they were objects by putting business rule methods in them. This is awkward because 
+it creates a hybrid between a data structure and an object.
+
+The solution, of course, is to treat the Active Record as a data structure and to create 
+separate objects that contain the business rules and that hide their internal data 
+(which are probably just instances of the Active Record).
+
+
+####Conclusion
+
+Objects expose behavior and hide data. This makes it easy to add new kinds of objects without changing existing 
+behaviors. It also makes it hard to add new behaviors to existing objects. Data structures expose 
+data and have no significant behavior. This makes it easy to add new behaviors to existing data 
+structures but makes it hard to add new data structures to existing functions.
+
+In any given system we will sometimes want the flexibility to add new data types, 
+and so we prefer objects for that part of the system. Other times we will want the 
+flexibility to add new behaviors, and so in that part of the system we prefer data types 
+and procedures. Good software developers understand these issues without prejudice and 
+choose the approach that is best for the job at hand.
+
+other good resources:
+https://stackoverflow.com/questions/23406307/whats-the-difference-between-objects-and-data-structures
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
