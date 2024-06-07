@@ -64,7 +64,8 @@ private void testRefactoringMyself_Success() throws Exception {
             assertTrue(habit.isAtractiveAndEasyToDo());
             
             //Somtimes it’s easier to build a new habit in a new environment
-            assertTrue(habit.isNeedNewEnviroment() ? habit.isProvideNewEnviroment() : true );
+            assertTrue(habit.isNeedNewEnviroment() ? 
+                habit.isProvideNewEnviroment() : true );
 
         }   
         // for bad habits that you  don't want to have 
